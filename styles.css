@@ -1,25 +1,49 @@
-.gridContainer{
-    max-width: 1200px;
+.grid-container{
+    display: flex;
+    border: 5px black solid;
     margin: 0 auto;
+    padding: 0;
+    width: 960px;
+    height: 960px;
 }
+
+.gridBox{
+    display: flex;
+    flex-direction: column;
+    border: 5px black solid;
+    margin: 0 auto;
+    padding: 0;
+    flex-wrap: wrap;
+    flex: 1;
+}
+
+
 
 .row{
     display: flex;
-}
-
-.column{
-    border: .1px solid black;
-    color: gray;
-    background-color: gray;
+    
     
 }
 
-.column-hover{
-    border: .1px solid black;
-    color: black;
-    background-color: black;
+.column{
+    background-color: rgb(199, 201, 204);
+    width: 20px;
+    height: 20px;
+    flex: 1 1 1;
 }
 
+.no-select{
+    user-select: none;
+    
+}
+
+button{
+    margin: 0px 20px;
+    width: 100px;
+    height: 40px;
+    font-weight: bold;
+    font-size: medium;
+}
 
 
   
