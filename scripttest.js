@@ -1,18 +1,20 @@
 //16 x 16 grid 
 
-
 let gridLoad = document.body.setAttribute('onload', "defaultGrid(16)");
-const grid = document.getElementById('grid-box');
+let gridVal;
+
 
 if (location.reload){
-    gridLoad = document.body.setAttribute('onload', "changeGridValue()");
+    gridLoad = document.body.setAttribute('onload', "tileSize()");
+    
 }
 
+const grid = document.getElementById('grid-box');
 
 
 const gridButton = document.createElement('button');
 gridButton.setAttribute('id', 'grid_button');
-gridButton.setAttribute('onclick', 'location.reload(true)');
+gridButton.setAttribute('onclick', 'location.reload()');
 gridButton.innerText = "Grid Size";
 document.getElementById('button').appendChild(gridButton);
 
@@ -35,36 +37,45 @@ document.getElementById('buttonRGB').appendChild(gridButtonClear);
 
 
 
+
 function defaultGrid(n){
-    for(i = 0; i < n; i++)
+    gridVal = n;
+    for(i = 0; i < gridVal; i++)
     {
         const gridRow = document.createElement('div');
         gridRow.className = 'row';
         grid.appendChild(gridRow);
-        for(j = 0; j < n; j++){
+        for(j = 0; j < gridVal; j++){
             const gridColumn = document.createElement('div');
             gridColumn.className = 'column';
             gridRow.appendChild(gridColumn);
         } 
     }
-    return blackEffect();
+    blackEffect();
+    
 }
-//grid function that calls the default grid and changes its size... black
+//function that changes grid size
 
 function changeGridValue(){
     
-    n = window.prompt("Size? (8 to 128)");
-        if (n < 8){
-            n = 8;
+    gridVal = window.prompt("Size? (8 to 128)");
+        if (gridVal < 8){
+            gridVal = 8;
         }
-        if (n > 128){
-            n = 128;
+        if (gridVal > 128){
+            gridVal = 128;
         }
-
-        for(i = 0; i < n; i++)
-    
-    return defaultGrid(n) && blackEffect();
-    
+    defaultGrid(gridVal);        
+}
+//change the ssize of each tile
+function tileSize(){
+    changeGridValue();
+    const colElement = document.getElementsByClassName("column");
+            const colArray = Array.from(colElement);
+            for (i = 0; i < colArray.length; i++){
+                colArray[i].style.width = (60 / gridVal) + "rem";
+                colArray[i].style.height = (60 / gridVal) + "rem";
+      }         
 }
 
 //black color for each tile
@@ -95,6 +106,7 @@ function colorEffect(){
                 });
       }       
     }
+
 //button that "clears" the grid of colors and sets to default color.
 function clearButton(){
     const colElement = document.getElementsByClassName("column");

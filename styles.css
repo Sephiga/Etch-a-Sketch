@@ -1,20 +1,22 @@
+*{
+    box-sizing: border-box;
+}
+
 .grid-container{
     display: flex;
-    border: 5px black solid;
-    margin: 0 auto;
+    margin: auto;
     padding: 0;
-    width: 960px;
-    height: 960px;
+    min-width: 0;
+    max-height: 62rem;
+    
+    
 }
 
 .gridBox{
-    display: flex;
-    flex-direction: column;
     border: 5px black solid;
-    margin: 0 auto;
-    padding: 0;
-    flex-wrap: wrap;
-    flex: 1;
+    margin: auto;
+    min-width: 0;
+    max-height: 62rem;
 }
 
 
@@ -23,13 +25,16 @@
     display: flex;
     
     
+    
+    
+    
 }
 
 .column{
     background-color: rgb(199, 201, 204);
-    width: 20px;
-    height: 20px;
-    flex: 1 1 1;
+    height: 1rem;
+    width: 1rem;
+    
 }
 
 .no-select{
